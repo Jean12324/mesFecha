@@ -234,7 +234,7 @@ button:hover {
 /* Ajuste de los botones de navegación */
 .navegacion {
     position: absolute;
-    width: 90%; /* Más cerca del libro */
+    width: 100%; /* Más cerca del libro */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
