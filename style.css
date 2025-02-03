@@ -178,8 +178,9 @@ button:hover {
 
 .libro {
     position: relative;
-    width: 75%;
-    height: 100%;
+    width: 75%; /* Ajusta el ancho del libro */
+    max-width: 450px; /* Reduce el ancho máximo */
+    height: 65vh; /* Altura proporcional menor para pantallas pequeñas */
     perspective: 1000px;
     margin: auto;
 }
@@ -194,7 +195,11 @@ button:hover {
     transition: transform 0.8s ease-in-out, opacity 0.5s ease-in-out;
     border-radius: 10px;
     background: white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .pagina.visible {
@@ -268,6 +273,16 @@ button:hover {
 
 /* Estilo adicional para pantallas pequeñas */
 @media (max-width: 768px) {
+    .libro {
+        height: 55vh; /* Ajusta el alto del libro para pantallas pequeñas */
+    }
+    .pagina {
+        font-size: 0.85rem; /* Reduce un poco el texto */
+        padding: 10px; /* Agrega un poco de espacio interno */
+    }
+    .portada .corazon, .contraportada .mensaje {
+        font-size: 1rem; /* Ajusta el texto en portada/contraportada */
+    }
     .carta {
         padding: 20px;
         width: 95%;
