@@ -1,6 +1,10 @@
 // Fragmentos de la historia
 const historia = [
     {
+        tipo: "portada",
+        texto: "💛 Para mi Cachetitos 💛", // Texto opcional para la portada
+    },
+    {
         gif: "26869201", // Happy Cat Clapping GIF
         texto: "Kriscial, eres la persona más increíble que he conocido. Desde que llegaste a mi vida, todo cambió. Eres mi razón de sonreír, mi cachetona hermosa, y no hay un solo día en el que no piense en ti.",
     },
@@ -89,10 +93,14 @@ const historia = [
         texto: "Contigo quiero enfrentar el mundo, superar obstáculos y celebrar cada pequeña victoria. Juntos, sé que podemos con todo.",
     },
     {
-        texto: "Hoy cerramos un capítulo más de nuestra historia, mi cachetona hermosa. Cada día a tu lado es un regalo, y hoy celebramos otro mes lleno de amor, risas y complicidad. Feliz día, amor mío. Que este mes sea solo uno de los miles más que viviremos juntos, construyendo sueños y disfrutando cada momento. Te amo más de lo que las palabras pueden expresar.",
+        texto: "Hoy cerramos un capítulo más de nuestra historia. Cada día a tu lado es un regalo, y hoy celebramos otro mes lleno de amor y risas. Feliz día, amor mío. Que este mes sea solo uno de los miles más que viviremos juntos, construyendo sueños y disfrutando cada momento. Te amo más de lo que las palabras pueden expresar.",
     },
     {
         gif: "10447284005503087999", // Reemplaza con el ID de un GIF que simbolice amor o celebración
+    },
+    {
+        tipo: "contraportada",
+        texto: "Dedicado con todo mi amor ❤️",
     },
 ];
 
@@ -105,19 +113,35 @@ function generarPaginas() {
     historia.forEach((pagina, index) => {
         const paginaDiv = document.createElement("div");
         paginaDiv.classList.add("pagina");
-        if (index === 0) paginaDiv.classList.add("visible");
 
-        // Contenido especial para la penúltima y última página
-        if (index === historia.length - 2) {
-            // Penúltima página con solo texto centrado
+        // Portada
+        if (pagina.tipo === "portada") {
+            paginaDiv.classList.add("portada");
+            const corazon = document.createElement("div");
+            corazon.classList.add("corazon");
+            corazon.textContent = pagina.texto;
+            paginaDiv.appendChild(corazon);
+        }
+        // Contraportada
+        else if (pagina.tipo === "contraportada") {
+            paginaDiv.classList.add("contraportada");
+            const mensaje = document.createElement("p");
+            mensaje.classList.add("mensaje");
+            mensaje.textContent = pagina.texto;
+            paginaDiv.appendChild(mensaje);
+        }
+        // Penúltima página: solo texto centrado
+        else if (index === historia.length - 3) {
+            paginaDiv.classList.add("penultima-pagina");
             const texto = document.createElement("p");
-            texto.classList.add("texto-centro"); // Clase especial para centrar el texto
             texto.textContent = pagina.texto;
             paginaDiv.appendChild(texto);
-        } else if (index === historia.length - 1) {
-            // Última página con imagen grande y centrada
+        }
+        // Antepenúltima página: imagen centrada
+        else if (index === historia.length - 2) {
+            paginaDiv.classList.add("antepenultima-pagina");
             const gifContainer = document.createElement("div");
-            gifContainer.classList.add("gif-container-centrado"); // Clase especial para centrar y ampliar la imagen
+            gifContainer.classList.add("gif-container");
             const gif = document.createElement("div");
             gif.className = "tenor-gif-embed";
             gif.setAttribute("data-postid", pagina.gif);
@@ -126,8 +150,9 @@ function generarPaginas() {
             gif.setAttribute("data-width", "100%");
             gifContainer.appendChild(gif);
             paginaDiv.appendChild(gifContainer);
-        } else {
-            // Páginas normales
+        }
+        // Páginas normales
+        else {
             const gifContainer = document.createElement("div");
             gifContainer.classList.add("gif-container");
             const gif = document.createElement("div");
@@ -190,10 +215,12 @@ document.getElementById("btn-siguiente").addEventListener("click", () => {
 });
 
 
+
 // Inicializar las páginas
 document.getElementById("boton-sorpresa").addEventListener("click", () => {
     document.getElementById("carta-inicial").style.display = "none";
     document.getElementById("panel-libro").style.display = "flex";
     generarPaginas();
-    mostrarPagina(paginaActual);
+    mostrarPagina(0); // Mostrar la portada al inicio
 });
+
