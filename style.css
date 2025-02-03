@@ -1,0 +1,234 @@
+/* Fuente romántica */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* Fondo animado y romántico */
+body {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffe0e9);
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    animation: backgroundFade 8s infinite alternate;
+}
+
+@keyframes backgroundFade {
+    0% { background: linear-gradient(135deg, #ff758c, #ff7eb3, #ffe0e9); }
+    100% { background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb); }
+}
+
+/* Contenedor de la carta */
+.carta {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 2s ease-out;
+}
+
+/* Título con brillo */
+h1 {
+    font-size: 2.8rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+    100% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+}
+
+/* Texto de la carta */
+p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* Botón sorpresa */
+button {
+    background: #ff5c8d;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    padding: 15px 30px;
+    margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 92, 141, 0.6);
+}
+
+button:hover {
+    background: #ff6d9e;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(255, 92, 141, 0.8);
+}
+
+/* Panel del libro interactivo */
+.panel-libro {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    max-width: 650px;
+    height: 630px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+/* Contenedor de GIFs */
+.gif-container {
+    width: 90%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+/* Texto dentro del panel */
+.texto-pagina {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: justify; /* Justificar el texto para mejorar la apariencia */
+    margin: 20px 0;
+    padding: 20px; /* Añadir espacio interno alrededor del texto */
+    line-height: 1.8; /* Incrementar el espacio entre líneas para mejor lectura */
+    overflow-wrap: break-word;
+}
+
+/* Centrar texto en la penúltima página */
+.texto-centro {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 30px;
+}
+
+/* Centrar y agrandar el GIF en la última página */
+.gif-container-centrado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.gif-container-centrado .tenor-gif-embed {
+    width: 80%; /* Ajusta el tamaño según tus necesidades */
+    height: auto;
+}
+
+
+.libro {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    perspective: 1000px;
+    margin: auto;
+}
+
+.pagina {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-origin: left;
+    opacity: 0;
+    transition: transform 0.8s ease-in-out, opacity 0.5s ease-in-out;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pagina.visible {
+    opacity: 1;
+}
+
+.navegacion {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botón izquierdo */
+#btn-anterior {
+    position: absolute;
+    left: +15px; /* Separar más el botón del borde del libro */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Botón derecho */
+#btn-siguiente {
+    position: absolute;
+    right: +15px; /* Separar más el botón del borde del libro */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Estilo general para botones */
+.flecha {
+    background: #ff6b81;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flecha:hover {
+    background: #ff4d6d;
+    transform: scale(1.1);
+}
+
+/* Corazones flotantes */
+#corazones {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.corazon {
+    position: absolute;
+    color: red;
+    font-size: 2.5rem;
+    animation: flotar 6s linear infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(100vh) scale(0.6); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+}

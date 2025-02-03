@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Cachetitos 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenedor de la carta inicial -->
+    <div id="carta-inicial" class="carta">
+        <h1>Para mi Cachetitos 💕</h1>
+        <p id="texto"></p>
+        <button id="boton-sorpresa">Presiona aquí 😘</button>
+    </div>
+
+    <!-- Música de fondo -->
+    <audio id="musica" autoplay loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Panel del mini libro -->
+    <div id="panel-libro" class="panel-libro">
+        <div class="libro"></div>
+        <div class="navegacion">
+            <button id="btn-anterior" class="flecha">⬅</button>
+            <button id="btn-siguiente" class="flecha">➡</button>
+        </div>
+    </div>
+    
+    
+    <!-- Contenedor de corazones flotantes -->
+    <div id="corazones"></div>
+
+    <script src="script.js"></script>
+    <script src="script-libro.js"></script>
+</body>
+</html>
