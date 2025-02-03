@@ -30,7 +30,7 @@ document.addEventListener("click", () => {
   }
 });
 
-// Corazones flotantes
+// Corazones flotantesa
 function crearCorazon() {
   const corazon = document.createElement("div");
   corazon.classList.add("corazon");
